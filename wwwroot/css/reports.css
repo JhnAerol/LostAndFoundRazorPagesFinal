@@ -1,0 +1,27 @@
+﻿body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.form-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+.form-container h2 {
+    color: #6610f2;
+}
+
+.form-container button {
+    background-color: #6610f2;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.form-container button:hover {
+    background-color: #5a0fb7;
+}
