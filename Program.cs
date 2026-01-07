@@ -8,6 +8,14 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AddPageRoute("/LoginPage", "");
 });
 
+builder.Services.AddDistributedMemoryCache(); 
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(1); 
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<LostAndFoundRazorPagesContext>(options =>
@@ -30,6 +38,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
+app.UseSession();
+
 app.MapRazorPages()
    .WithStaticAssets();
 

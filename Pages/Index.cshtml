@@ -15,10 +15,8 @@
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 </head>
 <body>
-
-
     <div class="hero-section">
-        <h1>Welcome to Lost and Found</h1>
+        <h1>Welcome @Model.UserName to Lost and Found</h1>
         <p>Your one-stop destination for reporting lost and found items.</p>
 
         <a asp-page="LostItemViews/Create" class="button">
@@ -67,6 +65,13 @@
                 </div>
             </div>
         </div>
+
+        @if (Model.UserName != null)
+        {
+           
+            <a class="nav-link text-dark" asp-area="" asp-page="/LoginPage">Logout</a>
+            Model.UserName = null;
+        }
     </div>
 
 </body>

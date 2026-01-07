@@ -7,14 +7,24 @@ namespace LostAndFoundRazorPages.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public string UserName { get; set; }
+
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            UserName = HttpContext.Session.GetString("Name");
 
+            if (string.IsNullOrEmpty(UserName))
+            {
+                return RedirectToPage("/LoginPage");
+            }
+
+            return Page();
         }
     }
 }

@@ -37,6 +37,7 @@ namespace LostAndFoundRazorPages.Pages
                 return Page();
             }
 
+            HttpContext.Session.SetString("Name", user.UserName);
 
             return RedirectToPage("/Index");
         }
