@@ -14,7 +14,8 @@ namespace LostAndFoundRazorPages.Data
         {
         }
 
-        public DbSet<LostAndFoundRazorPages.Models.FoundItems> FoundItems { get; set; } = default!;
-        public DbSet<LostAndFoundRazorPages.Models.LostItems> LostItems { get; set; } = default!;
+        public DbSet<FoundItems> FoundItems { get; set; } = default!;
+        public DbSet<LostItems> LostItems { get; set; } = default!;
+        public DbSet<Users> Users { get; set; } = default!;
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LostAndFoundRazorPages.Migrations
 {
     [DbContext(typeof(LostAndFoundRazorPagesContext))]
-    [Migration("20251215100734_init")]
+    [Migration("20260107091728_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -79,6 +79,27 @@ namespace LostAndFoundRazorPages.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LostItems");
+                });
+
+            modelBuilder.Entity("LostAndFoundRazorPages.Models.Users", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

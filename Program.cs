@@ -3,6 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using LostAndFoundRazorPages.Data;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AddPageRoute("/LoginPage", "");
+});
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<LostAndFoundRazorPagesContext>(options =>
@@ -27,5 +32,6 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
+
 
 app.Run();

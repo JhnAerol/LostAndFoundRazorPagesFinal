@@ -42,6 +42,20 @@ namespace LostAndFoundRazorPages.Migrations
                 {
                     table.PrimaryKey("PK_LostItems", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -52,6 +66,9 @@ namespace LostAndFoundRazorPages.Migrations
 
             migrationBuilder.DropTable(
                 name: "LostItems");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
