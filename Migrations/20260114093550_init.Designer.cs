@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LostAndFoundRazorPages.Migrations
 {
     [DbContext(typeof(LostAndFoundRazorPagesContext))]
-    [Migration("20260107091728_init")]
+    [Migration("20260114093550_init")]
     partial class init
     {
         /// <inheritdoc />

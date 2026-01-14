@@ -25,6 +25,9 @@ namespace LostAndFoundRazorPages.Pages
 
         public IActionResult OnPost()
         {
+            if (LoginUser.Password == null)
+                return Page(); 
+
             var hashed = HashPassword(LoginUser.Password);
 
             var user = _context.Users
