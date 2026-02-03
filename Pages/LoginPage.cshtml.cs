@@ -25,8 +25,11 @@ namespace LostAndFoundRazorPages.Pages
 
         public IActionResult OnPost()
         {
-            if (LoginUser.Password == null)
-                return Page(); 
+            if (LoginUser.Password == null || LoginUser.UserName == null)
+            {
+                ErrorMessage = "Invalid username or password.";
+                return Page();
+            }
 
             var hashed = HashPassword(LoginUser.Password);
 
@@ -45,7 +48,7 @@ namespace LostAndFoundRazorPages.Pages
             return RedirectToPage("/Index");
         }
 
-        private string HashPassword(string password)
+        private string HashPassword(string? password)
         {
             using var sha = SHA256.Create();
             var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(password));

@@ -7,8 +7,6 @@
 
 <h1>Index</h1>
 
-
-
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -22,10 +20,13 @@
                 @Html.DisplayNameFor(model => model.LostItems[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LostItems[0].ItemType)
+                @Html.DisplayNameFor(model => model.LostItems[0].Location)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LostItems[0].DateFound)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LostItems[0].ImagePath)
             </th>
             <th></th>
         </tr>
@@ -40,10 +41,13 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemType)
+                @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateFound)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

@@ -16,6 +16,8 @@ namespace LostAndFoundRazorPages.Data
 
         public DbSet<FoundItems> FoundItems { get; set; } = default!;
         public DbSet<LostItems> LostItems { get; set; } = default!;
+        public DbSet<RecentItemViewModel> RecentItems { get; set; } = default!;
+
         public DbSet<Users> Users { get; set; } = default!;
     }
 }

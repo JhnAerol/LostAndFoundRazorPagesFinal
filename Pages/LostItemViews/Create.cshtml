@@ -5,60 +5,53 @@
         ViewData["Title"] = "Create";
         }
         
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report an Item</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/reports.css" asp-append-version="true" />
-</head>
-<body>
-
-    <div class="container">
-        <div class="form-container">
-            <h2>Report Lost Item</h2>
-            <form method="post">
-                <div class="mb-3">
-                    <label asp-for="LostItems.ItemName" class="control-label"></label>
-                    <input asp-for="LostItems.ItemName" class="form-control" />
-                    <span asp-validation-for="LostItems.ItemName" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="LostItems.Description" class="control-label"></label>
-                    <input asp-for="LostItems.Description" class="form-control" />
-                    <span asp-validation-for="LostItems.Description" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="LostItems.ItemType" class="control-label"></label>
-                    <input asp-for="LostItems.ItemType" class="form-control" />
-                    <span asp-validation-for="LostItems.ItemType" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="LostItems.DateFound" class="control-label"></label>
-                    <input asp-for="LostItems.DateFound" class="form-control" />
-                    <span asp-validation-for="LostItems.DateFound" class="text-danger"></span>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Report</button>
-            </form>
-            <div>
-                <a class="mt-5 text-black link-underline-opacity-0" asp-page="Index">Back to List</a>
+        <h1>Create</h1>
+        
+    <h4>LostItems</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="LostItems.ItemName" class="control-label"></label>
+                <input asp-for="LostItems.ItemName" class="form-control" aria-required="true"/>
+                <span asp-validation-for="LostItems.ItemName" class="text-danger"></span>
             </div>
-        </div>
-
-       
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="LostItems.Description" class="control-label"></label>
+                <input asp-for="LostItems.Description" class="form-control" aria-required="true"/>
+                <span asp-validation-for="LostItems.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="LostItems.Location" class="control-label"></label>
+                <input asp-for="LostItems.Location" class="form-control" aria-required="true"/>
+                <span asp-validation-for="LostItems.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LostItems.DateFound" class="control-label"></label>
+                <input asp-for="LostItems.DateFound" class="form-control" />
+                <span asp-validation-for="LostItems.DateFound" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label class="control-label">Item Image</label>
+                <input type="file" name="ImageFile" class="form-control" accept="image/*" required />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
 
-    
-
-</body>
-
-    @section Scripts {
-      @{
-         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-      }
-    }
-</html>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
