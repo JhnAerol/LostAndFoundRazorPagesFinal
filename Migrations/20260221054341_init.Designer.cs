@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LostAndFoundRazorPages.Migrations
 {
     [DbContext(typeof(LostAndFoundRazorPagesContext))]
-    [Migration("20260203220409_2nd")]
-    partial class _2nd
+    [Migration("20260221054341_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.11")
+                .HasAnnotation("ProductVersion", "9.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,6 +33,9 @@ namespace LostAndFoundRazorPages.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateFound")
                         .HasColumnType("datetime2");
 
@@ -42,7 +45,6 @@ namespace LostAndFoundRazorPages.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ItemName")
@@ -67,7 +69,10 @@ namespace LostAndFoundRazorPages.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateFound")
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateLost")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -76,7 +81,6 @@ namespace LostAndFoundRazorPages.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ItemName")
@@ -91,34 +95,6 @@ namespace LostAndFoundRazorPages.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LostItems");
-                });
-
-            modelBuilder.Entity("LostAndFoundRazorPages.Models.RecentItemViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateReported")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RecentItems");
                 });
 
             modelBuilder.Entity("LostAndFoundRazorPages.Models.Users", b =>

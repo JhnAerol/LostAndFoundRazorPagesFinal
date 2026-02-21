@@ -39,10 +39,77 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer-trust mt-5">
+
         <div class="container">
-            &copy; 2025 - LostAndFoundRazorPages - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+
+                    <h5 class="footer-title">Lost & Found System</h5>
+
+                    <p class="footer-text">
+                        Helping people reconnect with their lost belongings safely,
+                        securely, and efficiently.
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <h5 class="footer-title">Quick Links</h5>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a asp-page="/LostItemViews/Index">View Lost Items</a>
+                        </li>
+
+                        <li>
+                            <a asp-page="/FoundItemViews/Index">View Found Items</a>
+                        </li>
+
+                        <li>
+                            <a asp-page="/Privacy">Privacy Policy</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="col-md-4 mb-3">
+
+                    <h5 class="footer-title">Our Commitment</h5>
+
+                    <p class="footer-text">
+                        We are committed to protecting your information and helping
+                        reunite you with your belongings with integrity and care.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="text-center footer-bottom">
+
+                © @DateTime.Now.Year Lost & Found System
+                <br>
+
+                <small>
+                    Built with care for the community
+                </small>
+
+            </div>
+
         </div>
+
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

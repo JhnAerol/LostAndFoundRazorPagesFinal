@@ -3,6 +3,7 @@ using LostAndFoundRazorPages.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -62,8 +63,6 @@ namespace LostAndFoundRazorPages.Pages.LostItemViews
 
                 LostItems.ImagePath = $"uploads/{fileName}";
             }
-
-            LostItems.DateFound = DateTime.Now;
 
             _context.LostItems.Add(LostItems);
             await _context.SaveChangesAsync();

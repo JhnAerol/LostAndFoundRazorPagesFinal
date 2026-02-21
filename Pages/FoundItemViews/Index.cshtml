@@ -5,67 +5,155 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/datas.css" asp-append-version="true" />
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FoundItems[0].ItemName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoundItems[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoundItems[0].Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoundItems[0].DateFound)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FoundItems[0].ImagePath)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.FoundItems) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateFound)
-            </td>
-            <td>
-                    @if (!string.IsNullOrEmpty(item.ImagePath))
-                    {
-                        <img src="~/@item.ImagePath"
-                             alt="Item Image"
-                             width="80"
-                             height="80"
-                             style="object-fit:cover; border-radius:6px;" />
-                    }
-                    else
-                    {
-                        <span class="text-muted">No image</span>
-                    }
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="page-bg">
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="header-section d-flex justify-content-between align-items-center">
+
+            <div>
+
+                <h3 class="title">Found Items</h3>
+
+                <p class="subtitle">
+
+                    These items were found by honest members of the community.
+                    You might find something that belongs to you.
+
+                </p>
+
+            </div>
+
+            <a asp-page="Create" class="btn btn-report">
+
+                Report Found Item
+
+            </a>
+
+        </div>
+
+
+        <!-- ITEMS -->
+
+        <div class="row">
+
+            @if (Model.FoundItems.Count == 0)
+            {
+                <div class="col-12">
+
+                    <div class="empty-state">
+
+                        <h5>No found items reported yet</h5>
+
+                        <p class="text-muted">
+
+                            When items are reported, they will appear here.
+
+                        </p>
+
+                    </div>
+
+                </div>
+            }
+
+
+            @foreach (var item in Model.FoundItems)
+            {
+
+                <div class="col-md-4 mb-4">
+
+                    <div class="item-card">
+
+                        <!-- IMAGE -->
+                        @if (!string.IsNullOrEmpty(item.ImagePath))
+                        {
+                            <img src="~/@item.ImagePath"
+                                 class="item-image" />
+                        }
+                        else
+                        {
+                            <img src="https://via.placeholder.com/400x200?text=No+Image"
+                                 class="item-image" />
+                        }
+
+
+                        <!-- BODY -->
+
+                        <div class="card-body">
+
+                            <div class="item-title">
+
+                                @item.ItemName
+
+                            </div>
+
+
+                            <p class="text-muted mt-2">
+
+                                @item.Description
+
+                            </p>
+
+
+                            <div class="item-location">
+
+                                📍 @item.Location
+
+                            </div>
+
+
+                            <div class="item-date mt-1">
+
+                                Found: @item.DateFound.ToString("MMM dd, yyyy")
+
+                            </div>
+
+
+                            <!-- ACTIONS -->
+
+                            <div class="card-actions mt-3">
+
+                                <a asp-page="./Details"
+                                   asp-route-id="@item.Id"
+                                   class="action-details">
+
+                                    View
+
+                                </a>
+
+                                <a asp-page="./Edit"
+                                   asp-route-id="@item.Id"
+                                   class="action-edit">
+
+                                    Edit
+
+                                </a>
+
+                                <a asp-page="./Delete"
+                                   asp-route-id="@item.Id"
+                                   class="action-delete">
+
+                                    Delete
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>

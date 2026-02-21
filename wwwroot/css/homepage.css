@@ -1,0 +1,124 @@
+﻿body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fb;
+    color: #2c3e50;
+}
+
+/* NAVBAR */
+
+.navbar-custom {
+    background-color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.brand {
+    font-weight: 600;
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+    .logout-btn:hover {
+        background-color: #c0392b;
+    }
+
+/* HERO SECTION */
+
+.hero {
+    background: linear-gradient(135deg, #4A90E2, #6FA8DC);
+    color: white;
+    padding: 70px 30px;
+    border-radius: 0 0 40px 40px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+    .hero h1 {
+        font-weight: 600;
+    }
+
+    .hero p {
+        opacity: 0.95;
+    }
+
+/* BUTTONS */
+
+.action-btn {
+    border-radius: 30px;
+    padding: 12px 22px;
+    margin: 8px;
+    font-weight: 500;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-lost {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-found {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-view {
+    background-color: white;
+    color: #4A90E2;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* SECTION */
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* CARD */
+
+.item-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+    .item-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+.card-header {
+    background-color: #4A90E2;
+    color: white;
+    border-radius: 15px 15px 0 0 !important;
+    font-weight: 500;
+}
+
+.card-footer {
+    background-color: white;
+}
+
+/* TRUST MESSAGE */
+
+.trust-box {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 40px;
+}

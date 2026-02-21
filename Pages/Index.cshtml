@@ -12,76 +12,157 @@
     <title>Lost and Found</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
 </head>
 <body>
-    @if (Model.UserName != null)
-    {
-        <a class="nav-link text-dark text-end" asp-area="" asp-page="/LoginPage">Logout</a>
-    }
-    <div class="hero-section">
-        <h1>Welcome @Model.UserName to Lost and Found</h1>
-        <p>Your one-stop destination for reporting lost and found items.</p>
+    <div class="navbar-custom d-flex justify-content-between">
 
-        <a asp-page="LostItemViews/Create" class="button">
-            Report a Lost Item
-        </a>
-
-        <a asp-page="FoundItemViews/Create" class="button m-2">
-            Report a Found Item
-        </a>
-
-        <a asp-page="LostItemViews/Index" class="button m-2">
-            View a Lost Items
-        </a>
-
-        <a asp-page="FoundItemViews/Index" class="button m-2">
-            View a Found Items
-        </a>
-    </div>
-
-    
-
-    <div class="container mt-5">
-        <h2>Recent Lost & Found Items</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Lost Wallet</div>
-                    <div class="card-body">
-                        <p>A brown leather wallet found near the park.</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Reported: 2 days ago
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Found Keys</div>
-                    <div class="card-body">
-                        <p>Set of keys found in the shopping mall parking lot.</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Reported: 5 days ago
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Lost Phone</div>
-                    <div class="card-body">
-                        <p>Black iPhone found in the coffee shop.</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Reported: 1 week ago
-                    </div>
-                </div>
-            </div>
+        <div class="brand">
         </div>
 
-        
+        @if (Model.UserName != null)
+        {
+            <div>
+                Welcome, <strong>@Model.UserName</strong>
+                <a asp-page="/LoginPage" class="logout-btn ms-3 text-decoration-none">Logout</a>
+            </div>
+        }
+
     </div>
 
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <h1>You are not alone.</h1>
+
+        <p>
+            We help reconnect people with their lost belongings quickly, safely, and reliably.
+        </p>
+
+        <div class="mt-5">
+
+            <a asp-page="LostItemViews/Create" class="action-btn btn-lost text-decoration-none">
+                Report Lost Item
+            </a>
+
+            <a asp-page="FoundItemViews/Create" class="action-btn btn-found text-decoration-none">
+                Report Found Item
+            </a>
+
+            <br>
+            <br>
+            <br>
+
+
+            <a asp-page="LostItemViews/Index" class="action-btn btn-view  text-decoration-none">
+                View Lost Items
+            </a>
+
+            <a asp-page="FoundItemViews/Index" class="action-btn btn-view text-decoration-none">
+                View Found Items
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="container mt-5">
+
+        <h3 class="section-title">Recent Lost Items</h3>
+
+        <div class="row">
+
+            @foreach (var item in Model.LostItems)
+            {
+                <div class="col-md-4 mb-4">
+
+                    <div class="card item-card">
+
+                        <div class="card-header">
+                            Lost: @item.ItemName
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>@item.Description</p>
+
+                            <small class="text-muted">
+                                Location: @item.Location
+                            </small>
+
+                        </div>
+
+                        <div class="card-footer text-muted">
+
+                            Reported: @item.DateCreated.ToString("MMM dd, yyyy hh:mm:ss tt")
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+
+        <h3 class="section-title mt-4">Recent Found Items</h3>
+
+        <div class="row">
+
+            @foreach (var item in Model.FoundItems)
+            {
+                <div class="col-md-4 mb-4">
+
+                    <div class="card item-card">
+
+                        <div class="card-header" style="background-color:#27ae60">
+                            Found: @item.ItemName
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>@item.Description</p>
+
+                            <small class="text-muted">
+                                Location: @item.Location
+                            </small>
+
+                        </div>
+
+                        <div class="card-footer text-muted">
+
+                            Reported: @item.DateCreated.ToString("MMM dd, yyyy hh:mm:ss tt")
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+
+        <!-- TRUST SECTION -->
+
+        <div class="trust-box text-center">
+
+            <h5>Safe. Trusted. Community-Driven.</h5>
+
+            <p class="text-muted">
+                Our system is designed to help students and staff reconnect with lost belongings quickly and securely.
+                Every report brings someone closer to finding what matters.
+            </p>
+
+        </div>
+
+
+    </div>
 </body>
 </html>

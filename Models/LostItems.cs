@@ -16,7 +16,10 @@ namespace LostAndFoundRazorPages.Models
         [Required]
         public string Location { get; set; }
 
-        public DateTime DateFound { get; set; }
+        [Required]
+        public DateTime DateLost { get; set; }
+
+        public DateTime DateCreated { get; set; } = DateTime.Now;
 
         public string? ImagePath { get; set; }
     }

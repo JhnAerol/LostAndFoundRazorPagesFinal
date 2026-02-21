@@ -30,6 +30,9 @@ namespace LostAndFoundRazorPages.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("DateFound")
                         .HasColumnType("datetime2");
 
@@ -63,7 +66,10 @@ namespace LostAndFoundRazorPages.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateFound")
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateLost")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -86,34 +92,6 @@ namespace LostAndFoundRazorPages.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LostItems");
-                });
-
-            modelBuilder.Entity("LostAndFoundRazorPages.Models.RecentItemViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateReported")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RecentItems");
                 });
 
             modelBuilder.Entity("LostAndFoundRazorPages.Models.Users", b =>
